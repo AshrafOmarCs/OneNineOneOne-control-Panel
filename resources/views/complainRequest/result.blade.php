@@ -4,6 +4,9 @@
 @section('content')
 
 <section class="panel">
+<tr>
+<a href="http://127.0.0.1:8000/complain/filter">Back to Search </a>
+</tr>
               <header class="panel-heading">
                 Complain List 
               </header>

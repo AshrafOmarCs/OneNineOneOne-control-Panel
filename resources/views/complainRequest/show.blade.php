@@ -5,66 +5,91 @@
 
 <section class="panel">
               <header class="panel-heading">
-                User deatils :
+                Complain requests deatils :
               </header>
               <div class="panel-body">
-
-
-
                 <section class="panel">
  
               <table class="table table-striped">
                 <thead>
+
                   <tr>
-                 
-                    <th> </th>
-                    <th> </th>
-                   
+
+                    <th>Image</th>
+                    <th> <img src="" alt="img "></th>
+                  
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>name </td>
+                    <td>No  </td>
+                    <td>{{$data[0]->id}}</td>
+                  </tr>
+                  <tr>
+                    <td>Title </td>
                     <td>{{$data[0]->name}}</td>
                   </tr>
                   <tr>
-                    <td>username </td>
-                    <td>{{$data[0]->username}}</td>
+                    <td>Status </td>
+                    <td><?php
+                    if($data[0]->status_id == 1){
+                      echo "Panding";
+                    }elseif($data[0]->status_id == 2){
+                      echo "Underprocess";
+                    }elseif($data[0]->status_id == 3){
+                      echo "Done";
+                    }elseif($data[0]->status_id == 4){
+                      echo "cancelled";
+                    }else{
+                      echo "Unknown";
+                    }
+                    ?></td>
                   </tr>
                   <tr>
-                    <td>phone </td>
-                    <td>{{$data[0]->phone}}</td>
+                    <td>Complain Catogry Ar </td>
+                    <td>{{$data[0]->name_ar}}</td>
                   </tr>
                   <tr>
-                    <td>job_id </td>
-                    <td>{{$data[0]->job_id}}</td>
+                    <td>Complain Catogry En </td>
+                    <td>{{$data[0]->name_enn}}</td>
                   </tr>
                   <tr>
-                    <td>permessionExpiry </td>
-                    <td>{{$data[0]->permessionExpiry}}</td>
+                    <td>Angury Qty  </td>
+                    <td>{{$data[0]->anguryQty}}</td>
                   </tr>
                   <tr>
-                    <td>Company Name  </td>
-                    <td>{{$data[0]->companyName}}</td>
-                  </tr>
-                  <tr>
-                    <td>department  </td>
-                    <td>{{$data[0]->deptName_en}}</td>
+                    <td>Death Qty  </td>
+                    <td>{{$data[0]->deathQty}}</td>
                   </tr>
                   <tr>
                     <td>created at </td>
                     <td>{{$data[0]->created_at}}</td>
                   </tr>
-                    <tr>
-                    <td></td>
-                <td><a class="btn btn-danger" style="float: right;
-    margin: 10px" data-toggle="modal" href="#myModal3">
-                    Delete
-                </a> <a class="btn btn-success" style="float: right;
-    margin: 10px" data-toggle="modal" href="http://127.0.0.1:8000/userEdite/{{$data[0]->id}}">
-                    Edite
-                </a></td>
-                    </tr>
+                  <tr>
+                  </tr>
+                  
+                  <tr>
+                  <form action="" method="post">
+                  <div class="form-group ">
+                      <label for="cname" class="control-label col-lg-2">Assign a mission to <span class="required">:</span></label>
+                      <div class="col-lg-10">
+                        <select class="form-control m-bot15" name="userType">
+                        @foreach($workers as $value)
+                            <option value="{{$value->id}}">{{$value->name}} | {{$value->companyName}} | {{$value->dept_en}} ,{{$value->dept_ar}}</option>
+                        @endforeach
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-primary" type="submit">Confirm</button>
+                        <button class="btn btn-default" type="clear">Cancel</button>
+                      </div>
+                    </div>
+                  </form>
+
+                  </tr>
+
                 </tbody>
               </table>
             </section>
