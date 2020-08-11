@@ -36,3 +36,17 @@ Route::get('complain/show/{id}','complainContrller@show');
 Route::get('complain/delete/{id}','complainContrller@delete');
 Route::get('complain/filter','complainContrller@filter');
 Route::post('complain/Checking','complainContrller@checking');
+Route::post('complain/assighnTo/{id}','complainContrller@assighnTo');
+Route::get('dept/update/{id}','settingController@edite_dept');
+Route::post('dept/update/{id}','settingController@dept_update');
+Route::post('complain/update/{id}','complainContrller@updateStore');
+
+
+Route::get('compalin/update/{id}','complainContrller@UpdateComCat');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

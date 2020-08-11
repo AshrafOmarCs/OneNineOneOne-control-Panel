@@ -21,10 +21,12 @@ class complainContrller extends Controller
         }
     }
     public function show($id){
-        $data = DB::select("SELECT complainRequests.*,complains.name as name_ar ,complains.name_en as name_enn FROM `complainRequests` JOIN complains ON complains.id = complainRequests.id WHERE complainRequests.id=".$id."");
-        $workers = DB::select("SELECT users.*,departments.name_en as dept_en ,departments.name as dept_ar FROM `users` JOIN departments ON departments.id = users.id WHERE users.userType_id=2");
-        //dd($workers);
-        return view('complainRequest.show',compact('data','workers'));
+        $data = DB::select("SELECT complainRequests.*,complains.name as name_ar ,complains.name_en as name_enn FROM `complainRequests` JOIN complains ON complains.id = complainRequests.complain_id WHERE complainRequests.id=".$id."");
+        
+        $workerInfo = DB::select("SELECT users.* , departments.name as dept_ar,departments.name_en as dept_en FROM `users` join departments ON departments.id = users.department_Id where users.id =".$data[0]->issuedBy."");
+        $workers = DB::select("SELECT users.*,departments.name_en as dept_en ,departments.name as dept_ar FROM `users` JOIN departments ON departments.id = users.department_Id WHERE users.userType_id=2");
+       //dd($workerInfo);
+        return view('complainRequest.show',compact('data','workers','workerInfo'));
     }
     public function filter(){
         $depts = DB::table('complains')->get();
@@ -79,5 +81,31 @@ class complainContrller extends Controller
         $list = DB::select($sql);
        // dd($list);
        return view('complainRequest.result',compact('list'));
+    }
+    public function assighnTo(Request $req,$id){
+       // dd($req->all(),$id);
+        $sql = "UPDATE `complainRequests` SET status_id=2 ,technial_id=".$req->tecniacl_id." where id=".$id."";
+        $res = DB::update($sql);
+        if($res){
+            return redirect('http://127.0.0.1:8000/complain/list');
+        }else{
+            return redirect('http://127.0.0.1:8000/complain/show/'.$id.'');
+        }
+    }
+    public function UpdateComCat($id){
+        $sql = "select * from complains where id =".$id."";
+        $data = DB::select($sql);
+        return view('complain.edite',compact('data'));
+    }
+    public function updateStore(Request $req,$id){
+        //dd($req->all(),$id);
+        $sql = "UPDATE `complains` SET `name`='".$req->name."',`name_en`='".$req->name_en."' WHERE id=".$id."";
+        //dd($sql);
+        $req = DB::update($sql);
+        if($req){
+            return redirect('compy/list');
+        }else{
+            return redirect('compalin/update/'.$id.'');
+        }
     }
 }

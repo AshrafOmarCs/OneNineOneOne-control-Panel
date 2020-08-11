@@ -24,14 +24,14 @@
                       <div class="form-group">
                         <label class="control-label col-lg-2" for="title">From</label>
                         <div class="col-lg-10">
-                          <input type="date" name="from" class="form-control" id="from">
+                          <input type="date" name="from" class="form-control" id="from" required>
                         </div>
                       </div>
                       <!-- Content -->
                       <div class="form-group">
                         <label class="control-label col-lg-2" for="content">To</label>
                         <div class="col-lg-10">
-                        <input type="date" name="to"  class="form-control" id="to">
+                        <input type="date" name="to"  class="form-control" id="to" required>
                         </div>
                       </div>
                       <!-- Cateogry -->

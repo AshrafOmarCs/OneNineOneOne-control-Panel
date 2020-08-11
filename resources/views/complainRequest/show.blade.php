@@ -9,20 +9,49 @@
               </header>
               <div class="panel-body">
                 <section class="panel">
- 
-              <table class="table table-striped">
-                <thead>
 
-                  <tr>
+              <div >
+              <center>
+              <img style="    
+              width: 400px;
+              border-radius: 9px;
+              box-shadow: 0 0 1px;" src="http://127.0.0.1:8000/img/background2.jpg" alt="img ">
+              </div>
+              </center>
+<br>
 
-                    <th>Image</th>
-                    <th> <img src="" alt="img "></th>
-                  
-                  </tr>
-                </thead>
+            <table class="table table-striped">
+                <header class="panel-heading">
+                Issued By :
+              </header>
                 <tbody>
+
+                  <th>Job ID </th>
+                  <th>Technical Name</th>
+                  <th>Provided Company</th>
+                  <th>Department </th>
+                  <th>Permession Expiry </th>
+                  </tr>
                   <tr>
-                    <td>No  </td>
+                  <th>{{$workerInfo[0]->job_id}} </th>
+                  <td>{{$workerInfo[0]->name}}</td>
+                  <td>{{$workerInfo[0]->companyName}}</td>
+                  <td>{{$workerInfo[0]->dept_en}} | {{$workerInfo[0]->dept_ar}}</td>
+                  <th>{{$workerInfo[0]->permessionExpiry}}</th>
+                  </tr>
+              
+                </tbody>
+              
+                <tbody>
+
+                </table>
+ <br>
+          <table class="table table-striped">
+              <header class="panel-heading">
+                Complain Request Details :
+              </header>
+                  <tr>
+                    <td>  No  </td>
                     <td>{{$data[0]->id}}</td>
                   </tr>
                   <tr>
@@ -67,13 +96,29 @@
                   </tr>
                   <tr>
                   </tr>
-                  
                   <tr>
-                  <form action="" method="post">
+                  <td>Options </td>
+                  <td><a href="http://127.0.0.1:8000/complain/delete/{{$data[0]->id}}" class="btn btn-danger">Delete</a></td>
+                  </tr>
+                 
+
+                </tbody>
+              </table>
+<br>
+              <table class="table table-striped">
+              <header class="panel-heading">
+                Assign a mission to :
+              </header>
+                <tbody>
+
+                  <tr>
+                  <td>
+                  <form action="http://127.0.0.1:8000/complain/assighnTo/{{$data[0]->id}}" method="post" style="    margin-top: 15px;">
+                  @csrf
                   <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Assign a mission to <span class="required">:</span></label>
                       <div class="col-lg-10">
-                        <select class="form-control m-bot15" name="userType">
+                        <select class="form-control m-bot15" name="tecniacl_id">
                         @foreach($workers as $value)
                             <option value="{{$value->id}}">{{$value->name}} | {{$value->companyName}} | {{$value->dept_en}} ,{{$value->dept_ar}}</option>
                         @endforeach
@@ -87,11 +132,16 @@
                       </div>
                     </div>
                   </form>
-
+                  </td>
+                 
                   </tr>
-
+              
                 </tbody>
-              </table>
+              
+                <tbody>
+
+                </table>
+
             </section>
 
 

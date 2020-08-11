@@ -25,7 +25,7 @@
                     <td>{{$value->name_en}} </td>
                     
 
-                    <td><a class="btn btn-danger" href="userDetails/{{$value->id}}"> Delete</a> | <a class="btn btn-info" href="userDetails/{{$value->id}}"> Edite</a></td>
+                    <td> <a class="btn btn-info" href="http://127.0.0.1:8000/dept/update/{{$value->id}}"> Edite</a></td>
                   </tr>
                 @endforeach
                  

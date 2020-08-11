@@ -45,7 +45,7 @@
                       echo "Unknown";
                     }
                     ?></td>
-                    <td><a href="http://127.0.0.1:8000/complain/delete/{{$value->id}}" class="btn btn-danger">Delete</a> | <a href="http://127.0.0.1:8000/complain/edite/{{$value->id}}" class="btn btn-success">Edite</a> | <a href="http://127.0.0.1:8000/complain/show/{{$value->id}}" class="btn btn-info">view</a></td>
+                    <td> <a href="http://127.0.0.1:8000/complain/edite/{{$value->id}}" class="btn btn-success">Edite</a> | <a href="http://127.0.0.1:8000/complain/show/{{$value->id}}" class="btn btn-info">view</a></td>
                   </tr>
                  @endforeach
                 </tbody>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use DB;
+
 use Illuminate\Http\Request;
 
 class adminController extends Controller
@@ -23,10 +24,17 @@ class adminController extends Controller
         return view('users.list',compact('data'));
     }
     public function storeUser(Request $req){
-        //dd($req->all());
+        // dd($req->all());
+        if($req->name == null || $req->phone == null || $req->company_name == null || $req->job_id == null || $req->password == null || $req->permessionExpiry == null ){
+            $departments = DB::table('departments')->get();
+            //dd($departments);
+          
+            return view('users.create',compact('departments'));
+        }else{
+
+        }
         if($req->rePass == $req->password ){
             $md5 =  md5($req->rePass);
-            
          }else{
             return redirect('CreateUser'); 
          }

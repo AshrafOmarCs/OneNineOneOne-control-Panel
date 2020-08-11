@@ -43,4 +43,21 @@ class settingController extends Controller
             return redirect('http://127.0.0.1:8000/compy/add');
         }
     }
+    public function dept_update(Request $req,$id){
+        //dd($req->all(),$id);
+        $sql = "UPDATE `departments` SET `name`='".$req->name."',`name_en`='".$req->name_en."' WHERE id=".$id."";
+        //dd($sql);
+        $req = DB::update($sql);
+        if($req){
+            return redirect('dept/list');
+        }else{
+            return redirect('dept/update/'.$id.'');
+        }
+    }
+    public function edite_dept($id){
+        $sql = "select * from departments where id =".$id."";
+        $data = DB::select($sql);
+        return view('department.edite',compact('data'));
+       // dd($data);
+    }
 }
