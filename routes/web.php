@@ -43,10 +43,7 @@ Route::post('complain/update/{id}','complainContrller@updateStore');
 
 
 Route::get('compalin/update/{id}','complainContrller@UpdateComCat');
-Auth::routes();
+Route::get('/','adminController@login');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('loginAdmin','adminController@loginAdmin');
+ 

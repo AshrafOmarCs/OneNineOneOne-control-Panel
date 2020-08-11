@@ -62,7 +62,6 @@ class adminController extends Controller
     }
     public function userDetails($id){
         $data = DB::select("SELECT users.*,departments.name as deptName ,departments.name_en as deptName_en FROM users join departments ON users.department_Id = departments.id where users.id=".$id."");
-        
         return view('users.show',compact('data'));
     }
     public function userEdite($id){
@@ -71,7 +70,6 @@ class adminController extends Controller
     }
     public function updateUser(Request $req,$id){
         $arr = array('id'=>$id,'request'=>$req->all());
-       // dd($arr);
         if($req->rePass != null){
             if($req->rePass == $req->password){
                 $md5 =  md5($req->rePass);
@@ -102,7 +100,24 @@ class adminController extends Controller
         }else{
             return redirect('http://127.0.0.1:8000/userEdite/'.$id.'');
         }
+    }
+    public function login(){
         
-
+        return view('admin.login');
+    }
+    public function loginAdmin(Request $req){
+        $pass = md5($req->pass);
+        
+        $sql = "select * from users where username='".$req->username."' and password='".$pass."'";
+        $res = DB::select($sql);
+        if($res){
+            \Session::put('auth',$res[0]);
+            $auth = \Session::get('auth');
+           return redirect('Dashboard');
+        }else{
+            \Session::put('error','Credinitals not correct ');
+            return redirect('/');
+        }
+        //dd($res);
     }
 }

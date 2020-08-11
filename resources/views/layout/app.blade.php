@@ -169,7 +169,7 @@
             Licensing information: https://bootstrapmade.com/license/
             Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
           -->
-          Developed by <a href="">Sultan Aljohani</a>
+          Developed by <a style="color:#6f1520" href="">Sultan Aljohani</a>
         </div>
       </div>
     </section>
