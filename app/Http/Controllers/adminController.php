@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 class adminController extends Controller
 {
     //
+    public function __construct()
+    {
+        // complate the checking Condations For login 
+        
+    }
     public function index(){
         return view('admin.users');
     }
@@ -106,17 +111,18 @@ class adminController extends Controller
         return view('admin.login');
     }
     public function loginAdmin(Request $req){
-        $pass = md5($req->pass);
+        $pass =Hash::make($req->pass);
+        dd($pass);
         
         $sql = "select * from users where username='".$req->username."' and password='".$pass."'";
         $res = DB::select($sql);
         if($res){
             \Session::put('auth',$res[0]);
             $auth = \Session::get('auth');
-           return redirect('Dashboard');
+           //return redirect('Dashboard');
         }else{
             \Session::put('error','Credinitals not correct ');
-            return redirect('/');
+            //return redirect('/');
         }
         //dd($res);
     }

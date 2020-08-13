@@ -47,17 +47,23 @@
         Session()->forget('error');
     ?>
     @endif
-    <form class="login-form" method="post" action="loginAdmin">
+    <form method="POST" action="{{ route('login') }}" class="login-form" method="post">
         @csrf
       <div class="login-wrap">
         <p class="login-img"><i class="icon_lock_alt"></i></p>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_profile"></i></span>
-          <input type="text" name="username" class="form-control" placeholder="Email" autofocus>
+          <input type="text" name="email" class="form-control" placeholder="Email" autofocus>
+
+           @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-          <input type="password" name="pass" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Password">
         </div>
 
         <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>

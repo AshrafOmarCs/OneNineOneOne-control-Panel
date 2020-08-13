@@ -83,10 +83,14 @@
                             <b class="caret"></b>
                         </a>
             <ul class="dropdown-menu extended logout">
-              <div class="log-arrow-up"></div>
+              <div class="log-arrow-up">
+              
+              </div>
 
               <li>
-                <a href="documentation.html"><i class="icon_key_alt"></i> Logout</a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    
+                </div>
               </li>
             </ul>
           </li>
@@ -103,7 +107,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="active">
-            <a class="" href="Dashboard">
+            <a class="" href="{{ url('statstaic') }}">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
@@ -116,8 +120,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="http://127.0.0.1:8000/usersList">Users List</a></li>
-              <li><a class="" href="http://127.0.0.1:8000/CreateUser"><span>add User</span></a></li>
+              <li><a class="" href="{{ url('usersList') }}">Users List</a></li>
+              <li><a class="" href="{{ url('CreateUser') }}"><span>add User</span></a></li>
              
             </ul>
           </li>
@@ -129,8 +133,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-            <li><a class="" href="http://127.0.0.1:8000/complain/list">review Complains</a></li>
-            <li><a class="" href="http://127.0.0.1:8000/complain/filter">Filter Complains</a></li>             
+            <li><a class="" href="{{ url('complain/list') }}">review Complains</a></li>
+            <li><a class="" href="{{ url('complain/filter') }}">Filter Complains</a></li>             
             </ul>
           </li>
 
@@ -141,14 +145,33 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="http://127.0.0.1:8000/dept/list">Departments List</a></li>
-              <li><a class="" href="http://127.0.0.1:8000/dept/create"><span>Add Departments</span></a></li>
-              <li><a class="" href="http://127.0.0.1:8000/compy/list"><span>complains Catogary List</span></a></li>
-              <li><a class="" href="http://127.0.0.1:8000/compy/add">Add Catogary</a></li>
+              <li><a class="" href="{{ url('dept/list') }}">Departments List</a></li>
+              <li><a class="" href="{{ url('dept/create') }}"><span>Add Departments</span></a></li>
+              <li><a class="" href="{{ url('compy/list') }}"><span>complains Catogary List</span></a></li>
+              <li><a class="" href="{{ url('compy/add') }}">Add Catogary</a></li>
               
             </ul>
           </li>
 
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+                          <i class="icon_documents_alt"></i>
+                          <span>Logout</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub">
+              <li> 
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                  @csrf
+              <button type="submit" class="btn btn-info" style="
+              width: 97%;
+              margin-left: 2px;"
+              >Logout </button>
+              </form></li>
+               
+              
+            </ul>
+          </li>
 
         </ul>
         <!-- sidebar menu end-->
